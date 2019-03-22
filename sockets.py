@@ -91,21 +91,22 @@ def read_ws(ws,client):
     try:
         while 1:
             msg = ws.receive()
-            if not msg:
+            print("new msg")
+            if msg != None:
+                print("new msg from client")
                 entity_data = json.loads(msg)
                 for entity in entity_data:
                     myWorld.set(entity, entity_data[entity])
             else:
                 break
-    except:
-        return
+    except Exception as e:
+        print("WS receive Error: ", e)
 
 @sockets.route('/subscribe')
 def subscribe_socket(ws):
     '''Fufill the websocket URL of /subscribe, every update notify the
        websocket and read updates from the websocket '''
     # XXX: TODO IMPLEMENT ME
-    print("I'm")
     client = Client()
     clients.append(client)
     print("ws: ", ws)
@@ -115,6 +116,7 @@ def subscribe_socket(ws):
         while 1:
             msg = client.get()
             ws.send(msg)
+            print("sent a message to client")
     except Exception as e:
         print("WS Error: ", e)
     finally:
