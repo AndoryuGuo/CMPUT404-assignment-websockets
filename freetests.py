@@ -93,12 +93,12 @@ class WorldClient(WebSocketClient):
         
 if __name__ == '__main__':
     try:
-        os.system("kill -9 $(lsof -t -i:5000)");
+        os.system("kill -9 $(lsof -t -i:8000)");
         os.system("bash run.sh &");
         print("Sleeping 3 seconds")
         gevent.sleep(3)
-        ws = WorldClient('ws://127.0.0.1:5000/subscribe', protocols=['http-only', 'chat'])
-        ws2 = WorldClient('ws://127.0.0.1:5000/subscribe', protocols=['http-only', 'chat'])
+        ws = WorldClient('ws://127.0.0.1:8000/subscribe', protocols=['http-only', 'chat'])
+        ws2 = WorldClient('ws://127.0.0.1:8000/subscribe', protocols=['http-only', 'chat'])
         ws.daemon = False
         ws2.daemon = False
         ws.name = "Reader/Writer"
@@ -125,6 +125,6 @@ if __name__ == '__main__':
         ws.close()
         ws2.close()
         gevent.sleep(1)
-        os.system("kill -9 $(lsof -t -i:5000)");
+        os.system("kill -9 $(lsof -t -i:8000)");
         print("Sleeping 2 seconds")
         gevent.sleep(2)
