@@ -53,9 +53,15 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
+Referrence
+============
+https://github.com/abramhindle/WebSocketsExamples/blob/master/chat.py Abram Hindle
+https://github.com/abramhindle/WebSocketsExamples/blob/master/static/chat.html Abram Hindle
+
+
 Contributors
 ============
-
+* Jiahao Guo
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
