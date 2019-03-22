@@ -91,9 +91,7 @@ def read_ws(ws,client):
     try:
         while 1:
             msg = ws.receive()
-            print("new msg")
             if msg != None:
-                print("new msg from client")
                 entity_data = json.loads(msg)
                 for entity in entity_data:
                     myWorld.set(entity, entity_data[entity])
@@ -109,14 +107,11 @@ def subscribe_socket(ws):
     # XXX: TODO IMPLEMENT ME
     client = Client()
     clients.append(client)
-    print("ws: ", ws)
     g = gevent.spawn(read_ws, ws, client)
-    print(clients)
     try:
         while 1:
             msg = client.get()
             ws.send(msg)
-            print("sent a message to client")
     except Exception as e:
         print("WS Error: ", e)
     finally:
